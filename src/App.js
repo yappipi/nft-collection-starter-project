@@ -10,6 +10,8 @@ const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 const OPENSEA_LINK = '';
 const TOTAL_MINT_COUNT = 50;
 
+const CONTRACT_ADDRESS = "0xdec95048BB9413475228097cb19CF0B20f284bA9";
+
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
   console.log("currentAccount: ", currentAccount);
@@ -87,7 +89,7 @@ const App = () => {
       });
       console.log("Setup event listener!");
     } else {
-      console.log("Etherum object doesn't exist!");
+      console.log("Ethereum object doesn't exist!");
     }
   } catch (error) {
     console.log(error);
@@ -95,7 +97,6 @@ const App = () => {
  };
 
  const askContractToMintNft = async () => {
-    const CONTRACT_ADDRESS = "0xdec95048BB9413475228097cb19CF0B20f284bA9";
     try {
       const { ethereum } = window;
       if (ethereum) {
