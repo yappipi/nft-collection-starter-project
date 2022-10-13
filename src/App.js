@@ -16,15 +16,6 @@ const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
   console.log("currentAccount: ", currentAccount);
 
-  const checkConnectedChain = async () => {
-    let chainId = await ethereum.request({ method: "eth_chainId"});
-    console.log("Connected to chain" + chainId);
-    const goerliChainId = "0x5";
-    if (chainId !== goerliChainId) {
-      alert("You are not connected to the Goerli Test Network!");
-    }
-  };
-
   /*
   * validate to MetaMask installed
   */
@@ -35,6 +26,14 @@ const App = () => {
       return;
     } else {
       console.log("We have the ethereum object", ethereum);
+    }
+
+    let chainId = await ethereum.request({ method: "eth_chainId"});
+    console.log("Connected to chain" + chainId);
+    const goerliChainId = "0x5";
+    if (chainId !== goerliChainId) {
+      alert("You are not connected to the Goerli Test Network!");
+      return;
     }
 
     const accounts = await ethereum.request({ method: "eth_accounts" });
@@ -136,7 +135,6 @@ const App = () => {
   );
 
   useEffect(() => {
-    checkConnectedChain();
     checkIfWallerIsConnected();
   }, []);
 
